@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 Vue.use(Router)
 
@@ -16,7 +16,7 @@ const router = new Router({
     {
       path: '/home',
       name: '首页',
-      component: Home
+      component: Dashboard
     },
     {
       path: '/about',
@@ -45,5 +45,9 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
+
+function addDynamicMenuAndRouter (userName, to, from) {
+
+}
 
 export default router
