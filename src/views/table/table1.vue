@@ -26,7 +26,7 @@
 export default {
   data () {
     return {
-      tableData: null,
+      tableData: [],
       currentRow: null,
       offset: 0,
       limit: 20,
@@ -36,53 +36,31 @@ export default {
     }
   },
   mounted () {
-    console.log('11111111111111')
-    this.initData()
+    this.getTableData()
   },
   methods: {
-    initData: function () {
-      this.tableData = [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }
-      ]
-      this.total = 100
-    },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
     },
     handleCurrentChange (val) {
       this.currentPage = val
       this.offset = (val - 1) * this.limit
+      this.getTableData()
+    },
+    async getTableData () {
+      let config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+      const query = { offset: this.offset, limit: this.limit }
+      const tables = await this.$http.post('/query/queryTableDates', query, config).then(function (res) {
+        if (res.data.code === '200') {
+          return res.data
+        }
+      })
+      this.tableData = tables.data.data
+      this.total = tables.total
     }
   }
 }
