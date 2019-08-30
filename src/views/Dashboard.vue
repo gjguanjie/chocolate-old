@@ -6,7 +6,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import NavBar from '@/views/layout/NavBar.vue'
 import MainContent from '@/views/layout/MainContent.vue'
 export default {

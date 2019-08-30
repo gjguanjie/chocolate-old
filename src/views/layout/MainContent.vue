@@ -1,10 +1,19 @@
 <template>
-  <div>主内容</div>
+  <transition name="fade-transform" mode="out-in">
+    <keep-alive>
+      <router-view  :key="key"></router-view>
+    </keep-alive>
+  </transition>
 </template>
 
 <script>
 export default {
-  name: 'MainContent'
+  name: 'MainContent',
+  computed: {
+    key () {
+      return this.$route.fullPath
+    }
+  }
 }
 </script>
 

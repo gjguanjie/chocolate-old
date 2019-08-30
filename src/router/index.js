@@ -1,22 +1,34 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Dashboard from '../views/Dashboard.vue'
+import dashboard from '../views/Dashboard.vue'
 
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+//  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: '登陆',
-      component: () => import('../views/Login.vue')
+      component: () => import('../views/login/Login.vue')
     },
     {
       path: '/home',
       name: '首页',
-      component: Dashboard
+      component: dashboard,
+      children: [
+        {
+          path: 'table1',
+          component: () => import('@/views/table/table1.vue'),
+          name: 'Table1'
+        },
+        {
+          path: 'table2',
+          component: () => import('@/views/table/table2.vue'),
+          name: 'Table2'
+        }
+      ]
     },
     {
       path: '/about',
@@ -29,25 +41,21 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  let username = sessionStorage.getItem('username')
-  if (to.path === '/') {
-    if (username) {
-      next({ path: '/home' })
-    } else {
-      next()
-    }
-  } else {
-    if (!username) {
-      next({ path: '/' })
-    } else {
-      next()
-    }
-  }
-})
-
-function addDynamicMenuAndRouter (userName, to, from) {
-
-}
+// router.beforeEach((to, from, next) => {
+//   let username = sessionStorage.getItem('username')
+//   if (to.path === '/') {
+//     if (username) {
+//       next({ path: '/home' })
+//     } else {
+//       next()
+//     }
+//   } else {
+//     if (!username) {
+//       next({ path: '/' })
+//     } else {
+//       next()
+//     }
+//   }
+// })
 
 export default router

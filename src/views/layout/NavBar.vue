@@ -1,23 +1,28 @@
 <template>
     <div>
-      <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal"
-        @select="handleSelect"  background-color="#545c64" text-color="color1" active-text-color="#ffd04b">
-        <el-menu-item index="1">处理中心</el-menu-item>
+      <el-menu :default-active="defaultActive" class="el-menu-demo" mode="horizontal"
+        @select="handleSelect"  background-color="#1E90FF" text-color="#1F1F1F" active-text-color="#ffd04b" router>
+        <el-menu-item index="/home"><svg-icon icon-class="user"/>处理中心</el-menu-item>
         <el-submenu index="2">
-          <template slot="title">我的工作台</template>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-          <el-menu-item index="2-3">选项3</el-menu-item>
-          <el-submenu index="2-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="2-4-1">选项1</el-menu-item>
-            <el-menu-item index="2-4-2">选项2</el-menu-item>
-            <el-menu-item index="2-4-3">选项3</el-menu-item>
+          <template slot="title"><svg-icon icon-class="home"/>我的工作台</template>
+          <el-menu-item index="/home/table1" >用户列表</el-menu-item>
+          <el-menu-item index="/home/table2">用户列表</el-menu-item>
+          <el-menu-item index="shopList">商家列表</el-menu-item>
+          <el-menu-item index="foodList">食品列表</el-menu-item>
+          <el-submenu index="2-3">
+            <template slot="title">订单列表</template>
+            <el-menu-item index="2-3-1">添加商铺</el-menu-item>
+            <el-menu-item index="2-3-2">添加商品</el-menu-item>
+            <el-menu-item index="2-3-3">用户分布</el-menu-item>
           </el-submenu>
         </el-submenu>
-        <el-menu-item index="3">消息中心</el-menu-item>
+        <el-menu-item index="3"><svg-icon icon-class="message"/>消息中心</el-menu-item>
         <el-menu-item index="4"><a href="https://www.baidu.com" target="_blank">百度</a></el-menu-item>
-        <el-menu-item index="5"><el-color-picker v-model="color1"></el-color-picker></el-menu-item>
+        <el-submenu index="5" class="pull-right">
+          <template slot="title"><svg-icon icon-class="user"/></template>
+          <el-menu-item index="/home" >首页</el-menu-item>
+          <el-menu-item index="/">退出</el-menu-item>
+        </el-submenu>
       </el-menu>
     </div>
 </template>
@@ -27,14 +32,17 @@ export default {
   name: 'NavBar',
   data () {
     return {
-      activeIndex: '1',
-      activeIndex2: '1',
       color1: '#409EFF'
     }
   },
   methods: {
     handleSelect (key, keyPath) {
-      console.log(key, keyPath)
+      console.log('进入：' + key)
+    }
+  },
+  computed: {
+    defaultActive: function () {
+      return this.$route.path.replace('/', '')
     }
   }
 }
