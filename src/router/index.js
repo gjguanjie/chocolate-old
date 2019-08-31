@@ -17,16 +17,25 @@ const router = new Router({
       path: '/home',
       name: '首页',
       component: dashboard,
+      meta: ['处理中心'],
       children: [
         {
           path: 'table1',
           component: () => import('@/views/table/table1.vue'),
-          name: 'Table1'
+          name: 'Table1',
+          meta: ['我的工作台', '用户列表']
         },
         {
           path: 'table2',
           component: () => import('@/views/table/table2.vue'),
-          name: 'Table2'
+          name: 'Table2',
+          meta: ['我的工作台', '用户分布']
+        },
+        {
+          path: 'form1',
+          component: () => import('@/views/form/form1.vue'),
+          name: 'Form1',
+          meta: ['订单列表', '表单样式']
         }
       ]
     },

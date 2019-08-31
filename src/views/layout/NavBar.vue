@@ -6,12 +6,12 @@
         <el-submenu index="2">
           <template slot="title"><svg-icon icon-class="home"/>我的工作台</template>
           <el-menu-item index="/home/table1" >用户列表</el-menu-item>
-          <el-menu-item index="/home/table2">用户列表</el-menu-item>
+          <el-menu-item index="/home/table2">用户分布</el-menu-item>
           <el-menu-item index="shopList">商家列表</el-menu-item>
           <el-menu-item index="foodList">食品列表</el-menu-item>
           <el-submenu index="2-3">
             <template slot="title">订单列表</template>
-            <el-menu-item index="2-3-1">添加商铺</el-menu-item>
+            <el-menu-item index="/home/form1">表单格式</el-menu-item>
             <el-menu-item index="2-3-2">添加商品</el-menu-item>
             <el-menu-item index="2-3-3">用户分布</el-menu-item>
           </el-submenu>

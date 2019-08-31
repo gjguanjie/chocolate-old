@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-table :data="tableData" style="width: 100%">
+    <el-table :data="tableData" style="width: 100%" border>
       <el-table-column prop="date" label="日期">
       </el-table-column>
       <el-table-column prop="name" label="姓名">
@@ -15,7 +15,7 @@
         :current-page="currentPage"
         :page-sizes="[10, 20, 50, 100]"
         :page-size="10"
-        layout="total, sizes, prev, pager, next, jumper"
+        layout="total, sizes, prev, pager, next"
         :total="total">
       </el-pagination>
     </div>
