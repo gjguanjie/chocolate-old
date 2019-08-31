@@ -172,7 +172,7 @@ export default {
                   color: '#fff'
                 },
                 position: 'insideTop',
-                formatter(p) {
+                formatter (p) {
                   return p.value > 0 ? p.value : ''
                 }
               }
@@ -205,7 +205,7 @@ export default {
               label: {
                 show: true,
                 position: 'top',
-                formatter(p) {
+                formatter (p) {
                   return p.value > 0 ? p.value : ''
                 }
               }
@@ -238,7 +238,7 @@ export default {
               label: {
                 show: true,
                 position: 'top',
-                formatter(p) {
+                formatter (p) {
                   return p.value > 0 ? p.value : ''
                 }
               }
