@@ -1,7 +1,7 @@
 <template>
-  <el-table
-    :data="tableData"
-    style="width: 100%">
+  <el-table :data="tableData" style="width: 100%">
+    <el-table-column type="index" width="50" label="序号">
+    </el-table-column>
     <el-table-column label="日期">
       <template slot-scope="scope">
         <i class="el-icon-time"></i>
@@ -21,7 +21,8 @@
     </el-table-column>
     <el-table-column label="操作">
       <template slot-scope="scope">
-        <el-button icon="el-icon-edit" circle @click="handleEdit(scope.$index, scope.row)"></el-button>
+        <el-button type="primary" icon="el-icon-search" circle @click="handleView(scope.$index, scope.row)"></el-button>
+        <el-button type="success" icon="el-icon-edit" circle @click="handleEdit(scope.$index, scope.row)"></el-button>
         <el-button type="danger" icon="el-icon-delete" circle @click="handleDelete(scope.$index, scope.row)"></el-button>
       </template>
     </el-table-column>
@@ -57,6 +58,10 @@ export default {
     },
     handleDelete (index, row) {
       console.log(index, row)
+    },
+    handleView (index, row) {
+      console.log('index:' + index)
+      this.$router.push({ path: '/home/about', query: { id: index } })
     }
   }
 }

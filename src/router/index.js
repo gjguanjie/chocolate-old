@@ -36,6 +36,30 @@ const router = new Router({
           component: () => import('@/views/form/form1.vue'),
           name: 'Form1',
           meta: ['订单列表', '表单样式']
+        },
+        {
+          path: 'about',
+          component: () => import('@/views/about/about.vue'),
+          name: 'About',
+          meta: ['订单列表', '关于']
+        },
+        {
+          path: 'echart1',
+          component: () => import('@/views/echart/echart1.vue'),
+          name: 'EChart1',
+          meta: ['我的工作台', '图表分布']
+        },
+        {
+          path: 'echart2',
+          component: () => import('@/views/echart/echart2.vue'),
+          name: 'EChart2',
+          meta: ['我的工作台', '直线分布']
+        },
+        {
+          path: 'mixChart',
+          component: () => import('@/views/echart/mixChart.vue'),
+          name: 'EChart2',
+          meta: ['我的工作台', '柱图分布']
         }
       ]
     },

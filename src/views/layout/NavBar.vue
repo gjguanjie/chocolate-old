@@ -1,26 +1,26 @@
 <template>
     <div>
       <el-menu :default-active="defaultActive" class="el-menu-demo" mode="horizontal"
-        @select="handleSelect"  background-color="#1E90FF" text-color="#1F1F1F" active-text-color="#ffd04b" router>
+        @select="handleSelect"  background-color="#304156" text-color="#BFCBD9" active-text-color="#ffd04b" router>
         <el-menu-item index="/home"><svg-icon icon-class="user"/>处理中心</el-menu-item>
         <el-submenu index="2">
           <template slot="title"><svg-icon icon-class="home"/>我的工作台</template>
           <el-menu-item index="/home/table1" >用户列表</el-menu-item>
           <el-menu-item index="/home/table2">用户分布</el-menu-item>
-          <el-menu-item index="shopList">商家列表</el-menu-item>
-          <el-menu-item index="foodList">食品列表</el-menu-item>
+          <el-menu-item index="/home/echart1">图表分布</el-menu-item>
+          <el-menu-item index="/home/echart2">直线分布</el-menu-item>
           <el-submenu index="2-3">
             <template slot="title">订单列表</template>
             <el-menu-item index="/home/form1">表单格式</el-menu-item>
-            <el-menu-item index="2-3-2">添加商品</el-menu-item>
-            <el-menu-item index="2-3-3">用户分布</el-menu-item>
+            <el-menu-item index="/home/about">关于商品</el-menu-item>
+            <el-menu-item index="/home/mixChart">柱图分布</el-menu-item>
           </el-submenu>
         </el-submenu>
         <el-menu-item index="3"><svg-icon icon-class="message"/>消息中心</el-menu-item>
         <el-menu-item index="4"><a href="https://www.baidu.com" target="_blank">百度</a></el-menu-item>
         <el-submenu index="5" class="pull-right">
           <template slot="title"><svg-icon icon-class="user"/></template>
-          <el-menu-item index="/home" >首页</el-menu-item>
+          <el-menu-item index="#/home" >首页</el-menu-item>
           <el-menu-item index="/">退出</el-menu-item>
         </el-submenu>
       </el-menu>
