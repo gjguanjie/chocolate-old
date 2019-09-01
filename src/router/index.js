@@ -58,8 +58,14 @@ const router = new Router({
         {
           path: 'mixChart',
           component: () => import('@/views/echart/mixChart.vue'),
-          name: 'EChart2',
+          name: 'MixChart',
           meta: ['我的工作台', '柱图分布']
+        },
+        {
+          path: 'dlineChart',
+          component: () => import('@/views/echart/dlineChart.vue'),
+          name: 'DlineChart',
+          meta: ['我的工作台', '动态线图']
         }
       ]
     },

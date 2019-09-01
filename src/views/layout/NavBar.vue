@@ -9,6 +9,7 @@
           <el-menu-item index="/home/table2">用户分布</el-menu-item>
           <el-menu-item index="/home/echart1">图表分布</el-menu-item>
           <el-menu-item index="/home/echart2">直线分布</el-menu-item>
+          <el-menu-item index="/home/dlineChart">动态线图</el-menu-item>
           <el-submenu index="2-3">
             <template slot="title">订单列表</template>
             <el-menu-item index="/home/form1">表单格式</el-menu-item>
