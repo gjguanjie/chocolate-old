@@ -1,6 +1,6 @@
 <template>
-  <el-table :data="tableData" style="width: 100%">
-    <el-table-column type="index" width="50" label="序号">
+  <el-table :data="tableData" style="width: 100%" border :header-cell-style="{background:'#394056',align:'center'}">
+    <el-table-column type="index" width="80" label="序号">
     </el-table-column>
     <el-table-column label="日期">
       <template slot-scope="scope">
@@ -19,7 +19,7 @@
         </el-popover>
       </template>
     </el-table-column>
-    <el-table-column label="操作">
+    <el-table-column label="操作"  align="center">
       <template slot-scope="scope">
         <el-button type="primary" icon="el-icon-search" circle @click="handleView(scope.$index, scope.row)"></el-button>
         <el-button type="success" icon="el-icon-edit" circle @click="handleEdit(scope.$index, scope.row)"></el-button>
