@@ -156,7 +156,13 @@ export default {
   watch: {
     data () {
       this.data = this.data
-      this.myChart.setOption(this.option)
+      console.log(this.data.length)
+      this.myChart.setOption({
+        series: [{
+          data: this.data
+        }]
+      })
+      // this.myChart.setOption(this.option)
     }
   }
 }

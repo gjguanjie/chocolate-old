@@ -25,7 +25,7 @@ export default {
     randomData () {
       var now = new Date(1997, 9, 3)
       var oneDay = 24 * 3600 * 1000
-      for (var ii = 0; ii < 1000; ii++) {
+      for (var ii = 0; ii < 50; ii++) {
         var value = Math.random() * 1000
         now = new Date(+now + oneDay)
         this.dataTime = now
@@ -45,6 +45,7 @@ export default {
       var now = this.dataTime
       var oneDay = 24 * 3600 * 1000
       now = new Date(+now + oneDay)
+      this.dataTime = now
       var value = Math.random() * 1000 + Math.random() * 21 - 10
       let dataTmp = {
         name: now.toString(),
