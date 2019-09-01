@@ -1,5 +1,5 @@
 <template>
-    <div :class="className" :id="id" :style="{height:height,width:width}"/>
+    <div :class="className" :data="data" :id="id" :style="{height:height,width:width}"/>
 </template>
 
 <script>
@@ -8,6 +8,12 @@ import echarts from 'echarts'
 export default {
   name: 'DlineEChart',
   props: {
+    data: {
+      type: Array,
+      default: function () {
+        return []
+      }
+    },
     className: {
       type: String,
       default: 'chart'
@@ -27,7 +33,7 @@ export default {
   },
   data () {
     return {
-      lineData: []
+      option: null
     }
   },
   mounted () {
@@ -42,31 +48,8 @@ export default {
     this.myChart = null
   },
   methods: {
-    randomData () {
-      var data = []
-      var now = new Date(1997, 9, 3)
-      var oneDay = 24 * 3600 * 1000
-      for (var ii = 0; ii < 1000; ii++) {
-        var value = Math.random() * 1000
-        now = new Date(+now + oneDay)
-        value = value + Math.random() * 21 - 10
-        let dataTmp = {
-          name: now.toString(),
-          value: [
-            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-            Math.round(value)
-          ]
-        }
-        data.push(dataTmp)
-      }
-      return data
-    },
     initData () {
-      let tmpData = this.randomData()
-      tmpData.forEach((detail) => {
-        this.lineData.push(detail)
-      })
-      const option = {
+      this.option = {
         backgroundColor: '#394056',
         title: {
           top: 20,
@@ -164,18 +147,16 @@ export default {
 
             }
           },
-          data: this.lineData
+          data: this.data
         }]
       }
-      this.myChart.setOption(option)
-      setInterval(() => {
-        this.lineData.shift()
-        this.myChart.setOption({
-          series: [{
-            data: this.lineData
-          }]
-        })
-      }, 1000)
+      this.myChart.setOption(this.option)
+    }
+  },
+  watch: {
+    data () {
+      this.data = this.data
+      this.myChart.setOption(this.option)
     }
   }
 }
