@@ -32,6 +32,12 @@ const router = new Router({
           meta: ['我的工作台', '用户分布']
         },
         {
+          path: 'table3',
+          component: () => import('@/views/table/table3.vue'),
+          name: 'Table3',
+          meta: ['消息中心', '对话列表']
+        },
+        {
           path: 'form1',
           component: () => import('@/views/form/form1.vue'),
           name: 'Form1',

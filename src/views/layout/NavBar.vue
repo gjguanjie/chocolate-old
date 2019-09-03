@@ -17,7 +17,10 @@
             <el-menu-item index="/home/mixChart">柱图分布</el-menu-item>
           </el-submenu>
         </el-submenu>
-        <el-menu-item index="3"><svg-icon icon-class="message"/>消息中心</el-menu-item>
+        <el-submenu index="3">
+          <template slot="title"><svg-icon icon-class="message"/>消息中心</template>
+          <el-menu-item index="/home/table3">对话列表</el-menu-item>
+        </el-submenu>
         <el-menu-item index="4"><a href="https://www.baidu.com" target="_blank">百度</a></el-menu-item>
         <el-submenu index="5" class="pull-right">
           <template slot="title"><svg-icon icon-class="user"/></template>
