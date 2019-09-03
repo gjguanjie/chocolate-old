@@ -68,7 +68,6 @@ export default {
         if (!valid) {
           return false
         } else {
-          debugger
           if (this.loginForm.username === 'admin' && this.loginForm.password === 'admin') {
             sessionStorage.setItem('username', this.username)
             this.$router.push('/home')

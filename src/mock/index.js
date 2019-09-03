@@ -1,5 +1,6 @@
 import tableData from './data/tableData'
 import lineData from './data/lineData'
+import menuData from './data/menuData'
 const Mock = require('mockjs')
 Mock.mock('/query/queryTableDates', 'post', () => {
   const result = {
@@ -16,6 +17,15 @@ Mock.mock('/query/lineData', 'post', () => {
     'code': '200',
     'message': '成功',
     'data': lineData(),
+    'total': 100
+  }
+  return result
+})
+Mock.mock('/query/findMenu', 'post', () => {
+  const result = {
+    'code': '200',
+    'message': '成功',
+    'data': menuData(),
     'total': 100
   }
   return result

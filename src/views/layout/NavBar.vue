@@ -25,7 +25,7 @@
         <el-submenu index="5" class="pull-right">
           <template slot="title"><svg-icon icon-class="user"/></template>
           <el-menu-item index="#/home" >首页</el-menu-item>
-          <el-menu-item index="/">退出</el-menu-item>
+          <el-menu-item index="#" @click="logout">退出</el-menu-item>
         </el-submenu>
       </el-menu>
     </div>
@@ -42,6 +42,10 @@ export default {
   methods: {
     handleSelect (key, keyPath) {
       console.log('进入：' + key)
+    },
+    logout () {
+      sessionStorage.clear()
+      this.$router.push('/')
     }
   },
   computed: {
