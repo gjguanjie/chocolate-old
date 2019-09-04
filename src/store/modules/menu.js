@@ -1,3 +1,4 @@
+import { IS_LOADED_NAV_TREE } from '../storeTypes'
 export default {
   state: {
     navTree: [],
@@ -12,7 +13,7 @@ export default {
     setNavTree (state, navTree) {
       state.navTree = navTree
     },
-    setLoadedNavTree (state, isloaded) {
+    [IS_LOADED_NAV_TREE] (state, isloaded) {
       state.isLoadedNavTree = isloaded
     }
   },

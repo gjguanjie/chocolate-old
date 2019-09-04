@@ -1,4 +1,4 @@
-import { SET_PERMS } from '../mutationTypes'
+import { SET_PERMS } from '../storeTypes'
 export default {
   state: {
     perms: []

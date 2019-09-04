@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import dashboard from '../views/Dashboard.vue'
 import api from '@/utils/http/api'
 import store from '@/store'
+import { IS_LOADED_NAV_TREE } from '../store/storeTypes'
 Vue.use(Router)
 
 const router = new Router({
@@ -102,6 +103,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 function addDynamicMenuAndRoutes (userName, to, from) {
+  console.log(store.state.menu.isLoadedNavTree)
   if (store.state.menu.isLoadedNavTree === true) {
     return
   }
@@ -111,7 +113,7 @@ function addDynamicMenuAndRoutes (userName, to, from) {
       let dynamicRoutes = addDynamicRoutes(res.data.list)
       router.options.routes[0].children = router.options.routes[0].children.concat(dynamicRoutes)
       router.addRoutes(router.options.routes)
-      store.commit('setLoadedNavTree', true)
+      store.commit(IS_LOADED_NAV_TREE, true)
     }
   )
 }
