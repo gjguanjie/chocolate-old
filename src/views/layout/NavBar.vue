@@ -20,6 +20,7 @@
         <el-submenu index="3">
           <template slot="title"><svg-icon icon-class="message"/>消息中心</template>
           <el-menu-item index="/home/table3">对话列表</el-menu-item>
+          <el-menu-item index="/home/table4">走马灯</el-menu-item>
         </el-submenu>
         <el-menu-item index="4"><a href="https://www.baidu.com" target="_blank">百度</a></el-menu-item>
         <el-submenu index="5" class="pull-right">

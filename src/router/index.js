@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import dashboard from '../views/Dashboard.vue'
-import http from '@/utils/http/http'
-
+import api from '@/utils/http/api'
+import store from '@/store'
 Vue.use(Router)
 
 const router = new Router({
@@ -101,37 +101,31 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
-let isLoad = false
 function addDynamicMenuAndRoutes (userName, to, from) {
-  if (isLoad === true) {
+  if (store.state.menu.isLoadedNavTree === true) {
     return
   }
-  isLoad = true
   let data = { userName: userName }
-  http.post('/query/findMenu', data).then(
+  api.post('/query/findMenu', data).then(
     res => {
-      console.log('000000000000000000')
-      console.log(res)
-      debugger
-      let dynamicRoutes = addDynamicRoutes(res.data.data)
-      console.log(router.options.routes[0].children)
+      let dynamicRoutes = addDynamicRoutes(res.data.list)
       router.options.routes[0].children = router.options.routes[0].children.concat(dynamicRoutes)
       router.addRoutes(router.options.routes)
-      console.log('1111111111')
+      store.commit('setLoadedNavTree', true)
     }
   )
 }
 function addDynamicRoutes (menuList = [], routes = []) {
-  var route = {
-    path: menuList.data.path,
-    component: null,
-    name: menuList.data.name
+  for (let ii = 0; ii < menuList.length; ii++) {
+    var route = {
+      path: menuList[ii].path,
+      component: null,
+      name: menuList[ii].name
+    }
+    let component = menuList[ii].url.replace(/^\//, '')
+    route['component'] = resolve => require([`@/views/${component}`], resolve)
+    routes.push(route)
   }
-  debugger
-  let component = menuList.data.url.replace(/^\//, '')
-  console.log(component)
-  route['component'] = resolve => require([`@/views/${component}`], resolve)
-  routes.push(route)
   return routes
 }
 

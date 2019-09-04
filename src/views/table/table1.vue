@@ -23,6 +23,7 @@
 </template>
 
 <script>
+// import api from '@/utils/http/api'
 export default {
   data () {
     return {
@@ -54,7 +55,7 @@ export default {
         }
       }
       const query = { offset: this.offset, limit: this.limit }
-      const tables = await this.$http.post('/query/queryTableDates', query, config).then(function (res) {
+      const tables = await this.axios.post('/query/queryTableDates', query, config).then(function (res) {
         if (res.data.code === '200') {
           return res.data
         }

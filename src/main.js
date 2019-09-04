@@ -11,7 +11,8 @@ import './styles.scss'
 import './mock'
 
 import axios from 'axios'
-Vue.prototype.$http = axios
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
 
 Vue.use(ElementUI, { locale })
 Vue.config.productionTip = false

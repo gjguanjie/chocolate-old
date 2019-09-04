@@ -25,7 +25,7 @@ Mock.mock('/query/findMenu', 'post', () => {
   const result = {
     'code': '200',
     'message': '成功',
-    'data': menuData(),
+    'list': menuData(),
     'total': 100
   }
   return result
