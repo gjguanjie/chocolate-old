@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import dashboard from '../views/Dashboard.vue'
+import dashboard from '../views/dashboard/Dashboard.vue'
 import api from '@/utils/http/api'
 import store from '@/store'
 import { IS_LOADED_NAV_TREE } from '../store/storeTypes'
@@ -76,11 +76,6 @@ const router = new Router({
       path: '/',
       name: '登陆',
       component: () => import('../views/login/Login.vue')
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
     }
   ]
 })
