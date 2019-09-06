@@ -24,9 +24,9 @@
           <el-menu-item v-for="item in navTree" :index="item.index" :key="item.name">{{item.name}}</el-menu-item>
         </el-submenu>
         <el-menu-item index="4"><a href="https://www.baidu.com" target="_blank">百度</a></el-menu-item>
-        <el-submenu index="5" class="pull-right">
+        <el-submenu index="5" style="float:right">
           <template slot="title"><svg-icon icon-class="user"/></template>
-          <el-menu-item index="#/home" >首页</el-menu-item>
+          <el-menu-item index="/home" >首页</el-menu-item>
           <el-menu-item index="#" @click="logout">退出</el-menu-item>
         </el-submenu>
       </el-menu>
