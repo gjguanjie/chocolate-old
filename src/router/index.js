@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import dashboard from '../views/dashboard/Dashboard.vue'
 import api from '@/utils/http/api'
 import store from '@/store'
-import { IS_LOADED_NAV_TREE } from '../store/storeTypes'
+import { IS_LOADED_NAV_TREE, NAV_TREE } from '../store/storeTypes'
 Vue.use(Router)
 
 const router = new Router({
@@ -109,12 +109,14 @@ function addDynamicMenuAndRoutes (userName, to, from) {
       router.options.routes[0].children = router.options.routes[0].children.concat(dynamicRoutes)
       router.addRoutes(router.options.routes)
       store.commit(IS_LOADED_NAV_TREE, true)
+      // 动态菜单处理
+      AddDynamicMenu(res.data.list)
     }
   )
 }
 function addDynamicRoutes (menuList = [], routes = []) {
   for (let ii = 0; ii < menuList.length; ii++) {
-    var route = {
+    let route = {
       path: menuList[ii].path,
       component: null,
       name: menuList[ii].name
@@ -124,6 +126,18 @@ function addDynamicRoutes (menuList = [], routes = []) {
     routes.push(route)
   }
   return routes
+}
+
+function AddDynamicMenu (menuList = []) {
+  let navTree = []
+  for (let ii = 0; ii < menuList.length; ii++) {
+    let menu = {
+      index: '/home/' + menuList[ii].path,
+      name: menuList[ii].name
+    }
+    navTree.push(menu)
+  }
+  store.commit(NAV_TREE, navTree)
 }
 
 export default router

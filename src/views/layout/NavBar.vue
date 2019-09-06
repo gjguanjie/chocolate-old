@@ -19,8 +19,9 @@
         </el-submenu>
         <el-submenu index="3">
           <template slot="title"><svg-icon icon-class="message"/>消息中心</template>
-          <el-menu-item index="/home/table3">对话列表</el-menu-item>
-          <el-menu-item index="/home/table4">动态表头</el-menu-item>
+          <!--<el-menu-item index="/home/table3">对话列表</el-menu-item>
+          <el-menu-item index="/home/table4">动态表头</el-menu-item>-->
+          <el-menu-item v-for="item in navTree" :index="item.index" :key="item.name">{{item.name}}</el-menu-item>
         </el-submenu>
         <el-menu-item index="4"><a href="https://www.baidu.com" target="_blank">百度</a></el-menu-item>
         <el-submenu index="5" class="pull-right">
@@ -33,6 +34,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'NavBar',
   data () {
@@ -52,7 +54,10 @@ export default {
   computed: {
     defaultActive: function () {
       return this.$route.path.replace('/', '')
-    }
+    },
+    ...mapState({
+      navTree: state => state.menu.navTree
+    })
   }
 }
 </script>
