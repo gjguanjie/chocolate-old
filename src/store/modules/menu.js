@@ -7,6 +7,9 @@ export default {
   getters: {
     getIsLoadedNavTree (state) {
       return state.isLoadedNavTree
+    },
+    getNavTree (state) {
+      return state.navTree
     }
   },
   mutations: {

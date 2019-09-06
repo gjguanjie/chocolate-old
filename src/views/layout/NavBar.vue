@@ -51,6 +51,9 @@ export default {
       this.$router.push('/')
     }
   },
+  created () {
+    // this.navTree = this.$store.getters.getNavTree 使用这种方式时，需在data中定义navTree,且不与...mapState并用
+  },
   computed: {
     defaultActive: function () {
       return this.$route.path.replace('/', '')
