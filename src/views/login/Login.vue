@@ -1,7 +1,7 @@
 <template>
   <div class="full-container">
     <el-form :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px"
-             class="login-container">
+             class="login-container" @keyup.enter.native="login('loginForm')">
       <h2 class="title" style="padding-left:22px;">登录系统</h2>
       <el-form-item prop="username">
         <!--<span><svg-icon icon-class="user"/></span>-->
